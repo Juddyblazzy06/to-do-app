@@ -1,20 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Index</title>
-</head>
-<body>
-    <h1>Welcome to Todo Application</h1>
-    <div>
-        <a href="/users/login">
-            <button class="login-btn">Login</button>
-        </a>
-        <a href="/users/register">
-            <button class="register-btn">Register</button>
-        </a>
-    </div>
-</body>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="/styles.css">  
+    <title>Todo Application</title>  
+    <style> 
+        /* Centering styles for body */ 
+        body {  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            flex-direction: column; /* Stack elements vertically */
+            min-height: 100vh;  
+            margin: 0;  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+            background: linear-gradient(120deg, #e0f7fa, #f4f4f9);  
+            color: #333;  
+        } 
+ 
+        /* Wrapper styles */ 
+        div {  
+            text-align: center;  
+        } 
+
+        img {  
+            width: 150px; /* Adjust the width as needed */  
+            height: auto; /* Maintain aspect ratio */  
+            margin-bottom: 20px; /* Add some space below the image */  
+            border-radius: 8px; /* Optional: Adds rounded corners */
+        } 
+ 
+        h1 {  
+            margin-bottom: 20px;  
+            font-weight: 600;  
+            color: #1f3b4b;  
+        } 
+ 
+        a {  
+            text-decoration: none;  
+        } 
+ 
+        .login-btn, .register-btn {  
+            padding: 14px 25px;  
+            margin: 10px;  
+            background-color: #3f51b5;  
+            color: #ffffff;  
+            border: none;  
+            border-radius: 8px;  
+            font-size: 16px;  
+            font-weight: 500;  
+            cursor: pointer;  
+            transition: background-color 0.3s ease, transform 0.3s ease;  
+        } 
+ 
+        .login-btn:hover, .register-btn:hover {  
+            background-color: #2c387e;  
+            transform: translateY(-2px);  
+        } 
+ 
+        .login-btn:active, .register-btn:active {  
+            transform: translateY(1px);  
+        } 
+    </style> 
+</head>  
+<body>  
+    <div>  
+        <img src="/images/alt-school.jpg" alt="To-do App Logo">  
+        <h1>To-do Application</h1>  
+        <a href="/users/login">  
+            <button class="login-btn">Login</button>  
+        </a>  
+        <a href="/users/register">  
+            <button class="register-btn">Register</button>  
+        </a>  
+    </div>  
+    <%- include('partials/footer') %> 
+</body>  
 </html>

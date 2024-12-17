@@ -3,30 +3,38 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 // Register a new user
+// Register a new user
 exports.register = async (req, res, next) => {
-    try {
-      const { username, password } = req.body;
-  
-      // Check if username already exists
-      const existingUser = await User.findOne({ username });
-      if (existingUser) {
-        return res.render('register', { errorMessage: 'Username already exists', successMessage: null });
-      }
-  
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      // Create a new user
-      await User.create({ username, password: hashedPassword });
-      console.log('User Created');
-  
-      // Redirect to login page after successful registration
-      return res.redirect('/users/login');
-    } catch (err) {
-      console.error('Error during registration:', err.message); // Log the error for debugging
-      return res.render('register', { errorMessage: 'Error during registration. Please try again.', successMessage: null });
+  try {
+    const { username, password } = req.body;
+    console.log('Register Request:', { username, password });
+
+    // Validate if username and password are provided
+    if (!username || !password) {
+      return res.render('register', { errorMessage: 'Username and password are required', successMessage: null });
     }
-  };  
+
+    // Check if username already exists
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.render('register', { errorMessage: 'Username already exists', successMessage: null });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new user
+    await User.create({ username, password: hashedPassword });
+    console.log('User Created');
+
+    // Redirect to login page after successful registration
+    return res.redirect('/users/login');
+  } catch (err) {
+    console.error('Error during registration:', err.message); // Log the error for debugging
+    return res.render('register', { errorMessage: 'Error during registration. Please try again.', successMessage: null });
+  }
+};
+
 
 // Login a user
 exports.login = async (req, res, next) => {

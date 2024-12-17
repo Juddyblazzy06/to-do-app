@@ -1,7 +1,13 @@
-const logger = (level, message) => {
-    const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] [${level.toUpperCase()}]: ${message}`);
-  };
-  
-  module.exports = logger;
-  
+// logger.js
+const winston = require('winston');
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.simple(),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+module.exports = logger;
