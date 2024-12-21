@@ -5,7 +5,7 @@ const request = require('supertest');
 const app = require('../app');
 const User = require('../server/models/User');
 
-const existingUsername = 'Damoz1059'; 
+const existingUsername = 'Amiens'; 
 const existingPassword = 'password123'; 
 
 // Connect to the database before running the tests
